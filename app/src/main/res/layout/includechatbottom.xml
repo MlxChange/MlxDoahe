@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:background="#9e9e9e"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"></LinearLayout>
+
+	<LinearLayout
+		android:weightSum="10"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="40dp">
+		<ImageView
+			android:id="@+id/chat_addmore"
+			android:layout_gravity="center_vertical"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:src="@drawable/addmore"
+			android:layout_height="30dp"/>
+
+		<ImageView
+			android:id="@+id/chat_voice"
+			android:layout_gravity="center_vertical"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:src="@drawable/voice"
+			android:layout_height="30dp"/>
+
+		<EditText
+			android:id="@+id/chat_editmessage"
+			android:layout_weight="7"
+			android:background="@null"
+			android:textColor="#9e9e9e"
+			android:layout_gravity="center_vertical"
+			android:layout_width="0dp"
+			android:layout_height="30dp"/>
+
+		<ImageView
+			android:id="@+id/chat_send"
+			android:layout_weight="1"
+			android:src="@drawable/send"
+			android:layout_width="0dp"
+			android:layout_height="30dp"/>
+	</LinearLayout>
+
+
+</LinearLayout>

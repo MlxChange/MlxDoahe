@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+
+	<ImageView
+		android:id="@+id/setting_bg"
+		android:background="#30000000"
+		android:scaleType="centerCrop"
+		android:layout_width="match_parent"
+		android:layout_height="230dp"/>
+	<RelativeLayout
+		android:layout_width="96dp"
+		android:onClick="setting_circle"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="70dp"
+		android:layout_height="96dp">
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/setting_cirlImage"
+			android:layout_width="match_parent"
+			android:layout_centerInParent="true"
+			android:onClick="setting_circle"
+			android:src="#70ffffff"
+			android:layout_height="match_parent"
+			/>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:id="@+id/setting_user_layout"
+		android:layout_width="330dp"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/setting_bg"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="25dp"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingStart="4dp"
+			android:text="用户名"
+			android:textColor="#9e9e9e"
+			android:textSize="12sp"/>
+
+
+		<EditText
+			android:id="@+id/setting_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="#212121"
+			android:textSize="15dp"
+			/>
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/setting_age_layout"
+		android:layout_width="330dp"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/setting_user_layout"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="20dp"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingStart="4dp"
+			android:text="年龄"
+			android:textColor="#9e9e9e"
+			android:textSize="12sp"/>
+
+
+		<EditText
+			android:id="@+id/setting_age"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+			android:textColor="#212121"
+			android:textSize="15dp"
+			/>
+
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/setting_phone_layout"
+		android:layout_width="330dp"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/setting_age_layout"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="20dp"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingStart="4dp"
+			android:text="邮箱"
+			android:textColor="#9e9e9e"
+			android:textSize="12sp"/>
+
+
+		<EditText
+			android:id="@+id/edit_email"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="#212121"
+			android:textSize="15dp"
+			/>
+
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/setting_desc_layout"
+		android:layout_width="330dp"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/setting_phone_layout"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="20dp"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingStart="4dp"
+			android:text="简介"
+			android:textColor="#9e9e9e"
+			android:textSize="12sp"/>
+
+
+		<EditText
+			android:id="@+id/setting_desc"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:textColor="#212121"
+			android:textSize="15dp"
+			/>
+
+	</LinearLayout>
+
+	<TextView
+		android:textSize="15dp"
+		android:textColor="#9e9e9e"
+		android:text="修改信息"
+		android:layout_below="@id/setting_desc_layout"
+		android:layout_marginTop="20dp"
+		android:layout_alignLeft="@+id/setting_desc_layout"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+
+	<Switch
+		android:id="@+id/setting_switch"
+		android:layout_below="@id/setting_desc_layout"
+		android:layout_marginTop="20dp"
+		android:layout_alignRight="@+id/setting_desc_layout"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+	<ImageView
+		android:onClick="back"
+		android:layout_marginTop="23dp"
+		android:layout_marginLeft="9dp"
+		android:src="@mipmap/back"
+		android:layout_width="27dp"
+		android:layout_height="18dp"/>
+	<ImageView
+		android:layout_marginTop="23dp"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="9dp"
+		android:src="@mipmap/ok"
+		android:layout_width="27dp"
+		android:id="@+id/setting_ok"
+		android:visibility="invisible"
+		android:layout_height="18dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.mlx.daohe">
+
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<!--允许联网 -->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<!--获取wifi网络状态的信息 -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<!--获取sd卡写的权限，用于文件上传和下载-->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<!--允许读取手机状态 用于创建BmobInstallation-->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<!--允许读取日志-->
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.READ_LOGS" />
+	<!--用于申请获取蓝牙信息进行室内定位-->
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<!--用于访问GPS定位-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<!--用于申请调用A-GPS模块-->
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+	<!-- 保持屏幕常亮所需权限 -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<!-- 读取手机联系人信息所需权限 -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<!-- 手机震动所需权限 -->
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<!-- 创建和删除文件所需权限 -->
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<!-- 相机的权限 -->
+	<uses-permission android:name="android.permission.CAMERA" />
+	<!-- 允许程序修改全局音频设置 比如说：存储位置 -->
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<!-- 录制语音权限 -->
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<!-- 读取或更改系统设置 所需权限 -->
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<!-- 设备休眠 -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+	<application
+		android:name=".application.BaseApplication"
+		android:allowBackup="true"
+		android:icon="@mipmap/icon"
+		android:label="@string/app_name"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme">
+		<meta-data
+			android:name="com.amap.api.v2.apikey"
+			android:value="24e9b6cc1f63ef9f564f2d15f62d2c33"/>
+		<meta-data
+			android:name="Bmob_APP_KEY"
+			android:value="dac2faee7190d653e2f3a7da2521fa61" />
+		<activity android:name=".Acvitity.SplashAcvitity" android:theme="@style/AppTheme">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity android:name=".Acvitity.Movies_desc"
+		          android:configChanges="orientation|screenSize|keyboardHidden"
+		          android:screenOrientation="portrait" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.GuideActivity"
+		          android:theme="@style/MlxNoActionBarAndFullScreen"/>
+		<activity android:name=".Acvitity.LoginAcvitity" android:theme="@style/AppTheme"/>
+		<activity android:name=".Acvitity.ForgotPassAcvitity"/>
+		<activity android:name=".Acvitity.SignUpActivity"/>
+		<activity android:name=".Acvitity.BaseAcvitity"/>
+		<activity android:name=".Acvitity.ZhihuContentAcvitity" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.ZhihuMainAcivitity" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.FindFriends" android:theme="@style/MlxNoactionBar" />
+		<activity android:name=".MainActivity" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.ChatAcvitity" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.RequestFriend" android:theme="@style/MlxNoactionBar" />
+		<activity android:name=".Acvitity.AddNewWant"/>
+		<activity android:name=".Acvitity.SettingActivity" android:theme="@style/MlxNoactionBar"/>
+		<activity android:name=".Acvitity.Wantinfo" android:theme="@style/MlxNoactionBar"/>
+		<receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver" >
+			<intent-filter>
+				<action android:name="cn.bmob.action.RECONNECT" />
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+			</intent-filter>
+		</receiver>
+		<service
+			android:name="cn.bmob.newim.core.service.BmobIMService"
+			android:process=":bmobcore" />
+		<service
+			android:name="cn.bmob.newim.core.service.NotifyService"
+			android:process=":bmobcore" />
+		<service android:name="cn.bmob.newim.core.service.ReConnectService" />
+		<service android:name="cn.bmob.newim.core.service.HeartBeatService" /><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+		<meta-data
+			android:name="com.google.android.gms.version"
+			android:value="@integer/google_play_services_version"/>
+
+	</application>
+
+</manifest>

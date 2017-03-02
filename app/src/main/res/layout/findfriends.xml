@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/findfriend_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?actionBarSize"
+		android:background="@color/colorPrimary"
+		app:contentInsetStart="0.0dp"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		app:title="发现新朋友"
+		app:titleTextColor="#fff">
+
+	</android.support.v7.widget.Toolbar>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:layout_marginTop="5dp">
+
+		<ImageView
+			android:id="@+id/findfriend_find"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:onClick="addNewFriend"
+			android:layout_alignParentRight="true"
+			android:layout_centerVertical="true"
+			android:layout_marginRight="10dp"
+			android:src="@drawable/find"/>
+
+		<EditText
+			android:id="@+id/findFriend_serceh"
+			android:layout_width="270dp"
+			android:layout_height="35dp"
+			android:background="@null"
+			android:hint="搜索对方用户名"
+			android:textColorHint="#9e9e9e"/>
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:background="@color/colorAccent">
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/findfriend_finded"
+		android:visibility="gone"
+		android:layout_marginTop="10dp"
+		android:layout_width="match_parent"
+		android:layout_height="70dp"
+		android:orientation="horizontal"
+		android:padding="5dp">
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/findfriend_circle"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="5dp"
+			android:src="@drawable/b"
+			/>
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="72dp"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="10dp">
+
+			<TextView
+				android:id="@+id/findfriend_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_marginBottom="5dp"
+				android:layout_marginTop="10dp"
+				android:maxLines="1"
+				android:text="小明"
+				android:textColor="#616161"
+				android:textSize="18sp"/>
+
+			<Button
+				android:id="@+id/findfriend_add"
+				android:layout_centerVertical="true"
+				android:layout_alignParentRight="true"
+				android:text="添加好友"
+				android:textColor="#fff"
+				android:layout_marginRight="7dp"
+				android:background="@color/colorPrimary"
+				android:layout_width="80dp"
+				android:onClick="addNewFriend"
+				android:layout_height="35dp"/>
+
+		</RelativeLayout>
+
+	</LinearLayout>
+	<ListView
+		android:layout_marginTop="20dp"
+		android:id="@+id/newfriend_listview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	</ListView>
+
+</LinearLayout>

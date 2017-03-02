@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/near_bar"
+		android:layout_width="match_parent"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		android:layout_height="wrap_content">
+
+		<android.support.design.widget.CollapsingToolbarLayout
+			android:layout_width="match_parent"
+			app:expandedTitleMarginEnd="64dp"
+			app:expandedTitleMarginStart="48dp"
+			app:contentScrim="@color/colorPrimary"
+			app:statusBarScrim="@color/colorPrimary"
+			app:layout_scrollFlags="scroll|exitUntilCollapsed"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/mywant_bg"
+				android:scaleType="centerCrop"
+				app:layout_collapseMode="parallax"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"/>
+			<android.support.v7.widget.Toolbar
+				android:id="@+id/mywant_toolbar"
+				app:title=""
+				app:titleTextColor="#fff"
+				app:subtitle="邀请详情"
+				app:subtitleTextColor="#fff"
+				android:layout_width="match_parent"
+				android:layout_height="?android:attr/actionBarSize"
+				app:layout_collapseMode="pin"  />
+
+
+		</android.support.design.widget.CollapsingToolbarLayout>
+
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v4.widget.NestedScrollView
+		android:layout_marginTop="25dp"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:id="@+id/setting_user_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/addnewwant_bg"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="25dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="用户名"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<com.jaredrummler.materialspinner.MaterialSpinner
+					android:id="@+id/mywant_name"
+					app:ms_text_color="#9e9e9e"
+					android:layout_width="match_parent"
+					android:layout_height="50dp"/>
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/setting_age_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/setting_user_layout"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="详情"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<com.jaredrummler.materialspinner.MaterialSpinner
+					android:id="@+id/mywant_content"
+					android:layout_width="match_parent"
+					app:ms_text_color="#9e9e9e"
+					android:layout_height="50dp"/>
+
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/setting_phone_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/setting_age_layout"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="邀请"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<com.jaredrummler.materialspinner.MaterialSpinner
+					android:id="@+id/mywant_type2"
+					android:layout_width="match_parent"
+					app:ms_text_color="#9e9e9e"
+					android:layout_height="50dp"/>
+
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/setting_desc_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/setting_phone_layout"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="邀请语"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<EditText
+					android:id="@+id/mywant_desc"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textColor="#212121"
+					android:maxLines="2"
+					android:textSize="15dp"
+				    android:enabled="false"
+					/>
+
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/mywant_phone_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/setting_desc_layout"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="联系方式"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<TextView
+					android:textSize="14sp"
+					android:textColor="#9e9e9e"
+					android:text="17862859110"
+					android:id="@+id/mywant_phone"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"/>
+
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/mywant_time_layout"
+				android:layout_width="330dp"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/mywant_phone_layout"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingStart="4dp"
+					android:text="发起时间"
+					android:textColor="#9e9e9e"
+					android:textSize="12sp"/>
+
+
+				<TextView
+					android:paddingStart="4dp"
+					android:textSize="14sp"
+					android:textColor="#9e9e9e"
+					android:layout_marginTop="5dp"
+					android:text="2017-12-4"
+					android:id="@+id/mywant_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"/>
+
+			</LinearLayout>
+
+
+		</RelativeLayout>
+
+
+	</android.support.v4.widget.NestedScrollView>
+
+	<!---
+	<android.support.design.widget.FloatingActionButton
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:clickable="true"
+		app:srcCompat="@drawable/error"
+		android:id="@+id/near_actionbutton"
+		app:layout_anchor="@id/near_bar"
+		app:layout_anchorGravity="center_horizontal|bottom"
+		/>
+	-->
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:layout_width="80dp"
+		android:id="@+id/mywant_circle"
+		android:src="@drawable/bg"
+		app:layout_anchor="@id/near_bar"
+		app:layout_anchorGravity="center_horizontal|bottom"
+		android:layout_height="80dp"/>
+
+</android.support.design.widget.CoordinatorLayout>

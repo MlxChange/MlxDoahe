@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/requestfriend_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?android:attr/actionBarSize"
+		android:background="@color/colorPrimary"
+		app:contentInsetStart="0.0dp"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		app:title="添加好友"
+		app:titleTextColor="#fff">
+
+	</android.support.v7.widget.Toolbar>
+
+	<TextView
+		android:layout_marginLeft="7dp"
+		android:layout_marginTop="10dp"
+		android:textSize="14sp"
+		android:text="填写验证信息"
+		android:textColor="#9e9e9e"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+	<EditText
+		android:layout_marginLeft="7dp"
+		android:id="@+id/request_message"
+		android:layout_marginTop="7dp"
+		android:maxLines="3"
+		android:background="@null"
+		android:textColor="#9e9e9e"
+		android:textSize="14sp"
+		android:layout_width="match_parent"
+		android:layout_height="70dp"/>
+	<Button
+		android:layout_marginTop="7dp"
+		android:text="发送"
+		android:layout_marginRight="10dp"
+		android:onClick="requestFriend"
+		android:textColor="#fff"
+		android:layout_gravity="end"
+		android:background="@color/colorPrimary"
+		android:layout_width="80dp"
+		android:layout_height="35dp"/>
+
+
+
+</LinearLayout>

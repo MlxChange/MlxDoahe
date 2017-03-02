@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+	<!--android:background="@drawable/c"-->
+
+
+	<ImageView
+		android:background="#35000000"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentStart="true"/>
+
+	<TextView
+		android:id="@+id/sign_title"
+		android:layout_width="wrap_content"
+		android:textColor="#fff"
+		android:textSize="55sp"
+		android:text="道和"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="70dp"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"/>
+
+	<!--
+	<RelativeLayout
+		android:id="@+id/sign_re"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="60dp"
+		android:layout_width="80dp"
+		android:layout_height="80dp">
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:layout_width="80dp"
+			android:src="#65ffffff"
+			android:layout_centerInParent="true"
+			android:layout_height="80dp"/>
+
+		<ImageView
+			android:layout_centerInParent="true"
+			android:src="@drawable/photo"
+			android:layout_width="48dp"
+			android:layout_height="48dp"/>
+	</RelativeLayout>
+
+	-->
+	<EditText
+		android:id="@+id/sign_name"
+		android:layout_marginTop="50dp"
+		android:layout_below="@+id/sign_title"
+		android:paddingStart="8dp"
+		android:layout_centerHorizontal="true"
+		android:layout_width="300dp"
+		android:background="#30ffffff"
+		android:drawablePadding="8dp"
+		android:hint="用户名"
+		android:textSize="16sp"
+		android:textColor="#fff"
+		android:textColorHint="#fff"
+		android:drawableStart="@mipmap/user"
+		android:layout_height="30dp"/>
+	<EditText
+		android:layout_marginTop="30dp"
+		android:id="@+id/sign_pass1"
+		android:layout_below="@+id/sign_name"
+		android:paddingStart="8dp"
+		android:layout_centerHorizontal="true"
+		android:layout_width="300dp"
+		android:background="#30ffffff"
+		android:inputType="textPassword"
+		android:drawablePadding="8dp"
+		android:hint="密码"
+		android:textSize="16sp"
+		android:textColor="#fff"
+		android:textColorHint="#fff"
+		android:drawableStart="@mipmap/pass"
+		android:layout_height="30dp"/>
+	<EditText
+		android:layout_marginTop="30dp"
+		android:id="@+id/sign_pass2"
+		android:layout_below="@+id/sign_pass1"
+		android:paddingStart="8dp"
+		android:layout_centerHorizontal="true"
+		android:layout_width="300dp"
+		android:background="#30ffffff"
+		android:inputType="textPassword"
+		android:drawablePadding="8dp"
+		android:hint="确认密码"
+		android:textColor="#fff"
+		android:textSize="16sp"
+		android:textColorHint="#fff"
+		android:drawableStart="@mipmap/pass"
+		android:layout_height="30dp"/>
+	<EditText
+		android:id="@+id/sign_phone"
+		android:layout_marginTop="30dp"
+		android:layout_below="@+id/sign_pass2"
+		android:paddingStart="8dp"
+		android:layout_centerHorizontal="true"
+		android:layout_width="300dp"
+		android:background="#30ffffff"
+		android:drawablePadding="8dp"
+		android:hint="手机号/用于密码找回"
+		android:inputType="phone"
+		android:textSize="16sp"
+		android:textColorHint="#fff"
+		android:textColor="#fff"
+		android:drawableStart="@mipmap/phone"
+		android:layout_height="30dp"/>
+
+	<Button
+		android:textColor="#fff"
+		android:textSize="16sp"
+		android:text="注册"
+		android:id="@+id/sign_sign"
+		android:background="#70000000"
+		android:onClick="sign"
+		android:layout_width="190dp"
+		android:layout_marginTop="70dp"
+		android:layout_height="35dp"
+		android:layout_below="@+id/sign_phone"
+		android:layout_centerHorizontal="true"
+
+		/>
+	<ImageView
+		android:onClick="back"
+		android:layout_marginTop="23dp"
+		android:layout_marginLeft="9dp"
+		android:src="@mipmap/back"
+		android:layout_width="27dp"
+		android:layout_height="18dp"/>
+
+
+</RelativeLayout>

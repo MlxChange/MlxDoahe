@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:id="@+id/nav_head_layout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="200dp"
+	>
+
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/nav_head_circle"
+		android:layout_width="72dp"
+		android:layout_marginLeft="20dp"
+		android:layout_height="72dp"
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginBottom="50dp"
+		/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="15dp"
+		android:textColor="#fff"
+		android:layout_marginLeft="20dp"
+		android:text="做最好的自己"/>
+
+</RelativeLayout>

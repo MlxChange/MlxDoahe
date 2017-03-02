@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imsdk.views.IMResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imchatview_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/imchatview_titlebar"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:background="@drawable/im_title_bg2"
+            android:visibility="visible" >
+
+            <imsdk.views.CustomImageButton
+                xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imchatview_back"
+                android:layout_width="60dip"
+                android:layout_height="45dip"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:scaleType="center"
+                IMSDK:custom_width="60dip"
+                IMSDK:custom_height="45dip"
+                IMSDK:custom_background="@android:color/transparent"
+                IMSDK:custom_src="@drawable/im_back_select_btn" />
+
+            <ImageView
+                android:id="@+id/dividingline"
+                android:layout_width="wrap_content"
+                android:layout_height="25dip"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/imchatview_back"
+                android:contentDescription="@null"
+                android:src="@drawable/im_dividingline" />
+
+            <TextView
+                android:id="@+id/imchatview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <imsdk.views.CustomImageButton
+                xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imchatview_titlebarright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="9dp"
+                android:contentDescription="@null"
+                IMSDK:custom_textColor="@color/white"
+                IMSDK:custom_textSize="16sp"
+                IMSDK:custom_background="@android:color/transparent"
+                android:scaleType="center"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/imchatview_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:cacheColorHint="@null"
+            android:divider="@null"
+            android:dividerHeight="3dp"
+            android:listSelector="@drawable/im_transparent_selector"
+            android:scrollbarStyle="outsideOverlay"
+            android:transcriptMode="alwaysScroll" />
+
+        <LinearLayout
+            android:id="@+id/imchatview_inputbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/im_tab_bg"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <!-- “+” 号按钮 -->
+			
+            <ImageButton
+                android:id="@+id/imchatview_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/im_type_select_btn" />
+            
+            <!-- “表情” 按钮 -->
+
+            <ImageButton
+                android:id="@+id/imchatview_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:src="@drawable/im_chatting_emoji_btn" />
+
+            <LinearLayout
+                android:id="@+id/chat_plantext_root"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical" >
+
+                <EditText
+                    android:id="@+id/imchatview_edittext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/im_login_edit_normal"
+                    android:imeOptions="actionNone"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:minHeight="45dp"
+                    android:singleLine="false"
+                    android:textSize="18sp"
+                    android:textColor="#000" />
+
+                <imsdk.views.CustomImageButton
+                    xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imchatview_record"
+                    android:layout_width="0dip"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:layout_margin="3dp"
+                    IMSDK:custom_height="45dp"
+                    IMSDK:custom_weight="1"
+                    IMSDK:custom_background="@drawable/im_chatting_send_btn_bg"
+                    IMSDK:custom_text="@string/str_voice_press"
+                    IMSDK:custom_textSize="16sp"
+                    IMSDK:custom_textColor="@color/black"
+                    android:visibility="gone" />
+
+                <imsdk.views.CustomImageButton
+                    xmlns:IMSDK="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imchatview_sendoraudioswtich"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginRight="6dp"
+                    android:contentDescription="@null"
+                    android:scaleType="center"
+                    IMSDK:custom_height="36dp"
+                    IMSDK:custom_background="@drawable/im_chatting_send_btn_bg"
+                    IMSDK:custom_src="@drawable/im_chatting_setmode_voice_btn_normal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/imchatview_footer"
+            android:layout_width="fill_parent"
+            android:layout_height="170dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TableLayout
+                android:id="@+id/imchatview_pluscontent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical" >
+
+                        <ImageButton
+                            android:id="@+id/imchatview_choosephoto"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_photo" />
+
+                        <TextView
+                            android:id="@+id/imchatview_choosephoto_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_image"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/chat_footer_image_root"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical" >
+
+                        <ImageButton
+                            android:id="@+id/imchatview_takephoto"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_camera" />
+
+                        <TextView
+                            android:id="@+id/imchatview_takephoto_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_take_photo"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:id="@+id/plusmenu_layout_3"          
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+							android:id="@+id/plusmenu_btn_3"                            
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_camera" />
+
+                        <TextView
+                            android:id="@+id/plusmenu_btntxt_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_take_photo"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:id="@+id/plusmenu_layout_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:id="@+id/plusmenu_btn_4"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/im_app_panel_shade"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_chat_camera" />
+
+                        <TextView
+                            android:id="@+id/plusmenu_btntxt_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_take_photo"
+                            android:textColor="#999"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </TableRow>
+				
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="6dp" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@null"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_app_panel_shade" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="invisible" >
+
+                        <ImageButton
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:contentDescription="@null"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/im_app_panel_shade" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/imchatview_facesviewpager"
+                android:layout_width="fill_parent"
+                android:layout_height="148dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/imchatview_facesindexpanel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="2dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</imsdk.views.IMResizeLayout>

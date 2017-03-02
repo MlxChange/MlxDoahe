@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:id="@+id/splash"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+
+
+	<TextView
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="100dp"
+		android:id="@+id/splash_tv"
+		android:text="道和"
+		android:textColor="#fff"
+		android:textSize="70sp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/splash_txt"
+		android:textSize="24sp"
+		android:layout_below="@+id/splash_tv"
+		android:layout_marginTop="180dp"
+		android:layout_centerHorizontal="true"
+		android:textColor="#fff"
+		android:text="发现更好的朋友"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+</RelativeLayout>

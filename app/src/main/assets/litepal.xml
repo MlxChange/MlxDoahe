@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+	<dbname value="Daohe"></dbname>
+	<version value="1"></version>
+
+	<list>
+		<mapping class="com.example.administrator.lxchange.entiy.Hot_Movies"></mapping>
+		<mapping class="com.example.administrator.lxchange.entiy.Movies">
+		</mapping>
+		<mapping class="com.example.administrator.lxchange.entiy.Movies.DataBean">
+		</mapping>
+		<mapping class="com.example.administrator.lxchange.entiy.Movies.MovieDetailModelBean">
+		</mapping>
+		<mapping class="com.example.administrator.lxchange.entiy.Movies.CommentResponseModelBean">
+		</mapping>
+		<mapping class="com.example.mlx.daohe.entiy.MyUser"></mapping>
+		<mapping class="com.example.mlx.daohe.entiy.Friend"></mapping>
+	</list>
+</litepal>

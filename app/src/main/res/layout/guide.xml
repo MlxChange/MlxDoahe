@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<android.support.v4.view.ViewPager
+		android:id="@+id/giude_viewpager"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	</android.support.v4.view.ViewPager>
+
+	<LinearLayout
+		android:layout_marginBottom="20dp"
+		android:layout_alignParentBottom="true"
+		android:layout_width="match_parent"
+		android:gravity="center"
+		android:orientation="horizontal"
+		android:layout_height="wrap_content">
+
+		<ImageView
+			android:id="@+id/giude_cirl1"
+			android:layout_width="12dp"
+			android:src="@drawable/point_off"
+			android:layout_height="12dp"/>
+		<ImageView
+			android:id="@+id/giude_cirl2"
+			android:layout_width="12dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			android:src="@drawable/point_on"
+			android:layout_height="12dp"/>
+		<ImageView
+			android:id="@+id/giude_cirl3"
+			android:layout_width="12dp"
+			android:src="@drawable/point_off"
+			android:layout_height="12dp"/>
+
+	</LinearLayout>
+	<ImageView
+		android:layout_marginRight="20dp"
+		android:layout_marginTop="30dp"
+		android:layout_alignParentRight="true"
+		android:id="@+id/giude_tiaoguo"
+		android:src="@drawable/guide_back"
+		android:onClick="GoMain"
+		android:layout_width="24dp"
+		android:layout_height="24dp"/>
+
+</RelativeLayout>

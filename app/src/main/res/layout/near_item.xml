@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="120dp"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_marginTop="5dp"
+	android:layout_marginLeft="2dp"
+	android:layout_marginRight="2dp"
+	app:cardElevation="5dp"
+	app:cardCornerRadius="5dp"
+	android:orientation="horizontal">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:layout_width="70dp"
+			android:layout_height="70dp"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/bg"
+			android:id="@+id/near_circle"/>
+
+		<LinearLayout
+			android:layout_gravity="center_vertical"
+			android:layout_width="200dp"
+			android:layout_height="100dp"
+			android:layout_marginLeft="12dp"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/near_username"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="7dp"
+				android:text="小明"
+				android:textColor="#616161"
+				android:textSize="18dp"/>
+
+			<LinearLayout
+				android:layout_gravity="center_vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="类型："
+					android:textColor="#bdbdbd"/>
+
+				<TextView
+					android:id="@+id/near_type"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="请客"
+					android:textColor="#ff7043"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/near_content"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="7dp"
+				android:text="电影：生化危机"
+				android:textColor="#9e9e9e"/>
+
+			<LinearLayout
+				android:layout_gravity="center_vertical"
+				android:orientation="horizontal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:text="邀请语："
+					android:layout_marginTop="5dp"
+					android:textColor="#9e9e9e"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+
+				<TextView
+					android:id="@+id/neat_message"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="5dp"
+					android:text="你好我发出了一个邀请"
+					android:textColor="#9e9e9e"/>
+
+			</LinearLayout>
+
+
+		</LinearLayout>
+
+		<RelativeLayout
+			android:layout_gravity="center_vertical"
+			android:layout_width="match_parent"
+			android:layout_height="100dp">
+
+			<TextView
+				android:layout_above="@+id/near_go"
+				android:id="@+id/near_item_state"
+				android:textColor="#ff7043"
+				android:text="未完成"
+				android:layout_marginBottom="20dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+
+			<ImageView
+				android:id="@+id/near_go"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
+				android:layout_marginRight="10dp"
+				android:src="@mipmap/like"/>
+			<TextView
+				android:layout_below="@+id/near_go"
+				android:id="@+id/near_item_time"
+				android:textColor="#9e9e9e"
+				android:text="2-16"
+				android:layout_marginTop="20dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+
+		</RelativeLayout>
+	</LinearLayout>
+
+</android.support.v7.widget.CardView>

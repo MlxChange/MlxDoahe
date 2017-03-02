@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/near_bar"
+		android:layout_width="match_parent"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		android:layout_height="wrap_content">
+
+		<android.support.design.widget.CollapsingToolbarLayout
+			android:layout_width="match_parent"
+			app:expandedTitleMarginEnd="64dp"
+			app:expandedTitleMarginStart="48dp"
+			app:contentScrim="@color/colorPrimary"
+			app:statusBarScrim="@color/colorPrimary"
+			app:layout_scrollFlags="scroll|exitUntilCollapsed"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/near_bg"
+				android:scaleType="centerCrop"
+				app:layout_collapseMode="parallax"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"/>
+			<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				app:title="附近"
+				app:titleTextColor="#fff"
+				app:subtitle="附近"
+				app:subtitleTextColor="#fff"
+				android:layout_width="match_parent"
+				android:layout_height="?android:attr/actionBarSize"
+				app:layout_collapseMode="pin"  />
+
+
+		</android.support.design.widget.CollapsingToolbarLayout>
+
+	</android.support.design.widget.AppBarLayout>
+
+	<android.support.v4.widget.NestedScrollView
+		android:layout_marginTop="25dp"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+
+		<android.support.v7.widget.RecyclerView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+		</android.support.v7.widget.RecyclerView>
+
+	</android.support.v4.widget.NestedScrollView>
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:layout_width="80dp"
+		android:id="@+id/menu_mywant_circle"
+		app:layout_anchor="@id/near_bar"
+		android:src="@drawable/bg"
+		app:layout_anchorGravity="center_horizontal|bottom"
+		android:layout_height="80dp"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

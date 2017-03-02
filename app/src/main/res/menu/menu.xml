@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res-auto"
+      xmlns:android1="http://schemas.android.com/apk/res/android"
+
+	>
+
+
+
+	<group>
+		<item android1:title="我的邀请"
+		      android1:id="@+id/menu_mywant"
+		      android1:icon="@drawable/cat" />
+		<item android1:title="参与邀请"
+		      android1:id="@+id/menu_rewant"
+		      android1:icon="@drawable/canyu" />
+
+	</group>
+	<item android1:title="个性化" >
+		<menu >
+			<item android1:title="不许无聊"
+			      android1:id="@+id/menu_zhihu"
+			      android1:icon="@drawable/zhihu" />
+			<item android1:title="今日新闻"
+			      android1:id="@+id/menu_news"
+			      android1:icon="@drawable/news" />
+			<item android1:title="个性设置"
+			      android1:id="@+id/menu_setting"
+			      android1:icon="@drawable/setting" />
+			<item android1:title="退出登录"
+			      android1:id="@+id/menu_logout"
+			      android1:icon="@drawable/logout" />
+		</menu>
+	</item>
+
+</menu>

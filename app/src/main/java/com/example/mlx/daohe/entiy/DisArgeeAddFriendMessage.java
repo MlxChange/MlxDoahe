@@ -12,7 +12,7 @@ import cn.bmob.newim.bean.BmobIMMessage;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/21 21:45
- * 用途：
+ * 用途：拒绝添加好友的自定义消息
  */
 
 public class DisArgeeAddFriendMessage extends BmobIMExtraMessage {

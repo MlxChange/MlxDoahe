@@ -2,7 +2,6 @@ package com.example.mlx.daohe.entiy;
 
 
 
-import org.greenrobot.greendao.annotation.Entity;
 
 import cn.bmob.v3.BmobObject;
 
@@ -11,7 +10,7 @@ import cn.bmob.v3.BmobObject;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/21 20:20
- * 用途：
+ * 用途：好友实体类
  */
 
 public class Friend extends BmobObject {

@@ -22,15 +22,19 @@ import java.util.Random;
  * 包名：com.example.administrator.lxchange.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/11 18:05
- * 用途：
+ * 用途：热门美食适配器
  */
 
 public class Hot_meishi_Adapter extends BaseAdapter{
 
+    //热门美食实体类集合
     private List<Hot_Meishi.ResultBean> mlist;
     private LayoutInflater inflater;
     private Context mcontext;
+    //随机加载图片
     private int[] mdrawables={R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e};
+
+
     public Hot_meishi_Adapter(Context context, Hot_Meishi meishi) {
         inflater=LayoutInflater.from(context);
         mcontext=context;

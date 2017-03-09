@@ -12,7 +12,7 @@ import cn.bmob.v3.BmobUser;
  * 包名：com.mlx.smartmlx.entiy
  * 创建者：MLX
  * 创建时间：2017/2/4 15:34
- * 用途：
+ * 用途：用户信息实体类
  */
 
 public class MyUser extends BmobUser {

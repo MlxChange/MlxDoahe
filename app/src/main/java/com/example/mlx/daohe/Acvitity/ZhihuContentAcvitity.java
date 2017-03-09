@@ -25,14 +25,16 @@ import com.tencent.smtt.sdk.WebView;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/28 3:05
- * 用途：
+ * 用途：知乎详情页面
  */
 
 public class ZhihuContentAcvitity extends BaseAcvitity {
 
     private ImageView zhihucontent_bg;
+
     private Toolbar zhihucontent_toolbar;
     private AppBarLayout zhihucontent_bar;
+    //x5内核的webview
     private WebView zhihucontent_webview;
     private String id;
     private CollapsingToolbarLayout toolbarLayout;
@@ -50,7 +52,7 @@ public class ZhihuContentAcvitity extends BaseAcvitity {
         dialog.show();
         if(!TextUtils.isEmpty(id)){
             String contentURL = UtilS.getZhihuContentURL(id);
-            L.i(contentURL);
+            //L.i(contentURL);
             RxVolley.get(contentURL, new HttpCallback() {
                 @Override
                 public void onFailure(int errorNo, String strMsg) {
@@ -66,6 +68,7 @@ public class ZhihuContentAcvitity extends BaseAcvitity {
     }
 
     private void parseJson(String t) {
+        //解析json字符串为实体类
         ZhihuContentEntiy entiy = new Gson().fromJson(t, ZhihuContentEntiy.class);
         String imgurl = entiy.getImages().get(0);
         Glide.with(this).load(imgurl).into(zhihucontent_bg);
@@ -73,6 +76,7 @@ public class ZhihuContentAcvitity extends BaseAcvitity {
 
         WebSettings settings = zhihucontent_webview.getSettings();
         settings.setJavaScriptEnabled(true);
+        //加载本地css文件
         String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/news.css\" type=\"text/css\">";
         String html = "<html><head>" + css + "</head><body>" + entiy.getBody() + "</body></html>";
         html = html.replace("<div class=\"img-place-holder\">", "");

@@ -41,27 +41,40 @@ import cn.bmob.v3.exception.BmobException;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/23 18:53
- * 用途：
+ * 用途：聊天acvitity
  */
 
 public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
 
+    //聊天下面的按钮，添加，语音，发送
     private ImageView addmore,voice,send;
+    //聊天输入框
     private EditText edit_message;
+
     private Button voice_button;
     private ListView listView;
+
+    //toolbar
     private Toolbar toolbar;
+
+    //真正的会话
     BmobIMConversation conversation;
+
     private String friendimg;
+
+    //传过来的会话
     BmobIMConversation c;
+
     private ChatAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatlayout);
+        //从会话或者好友列表传来的会话开启真正的会话
         c= (BmobIMConversation) getIntent().getBundleExtra("c").getSerializable("c");
         conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), c);
+        //获得好友的头像img
         friendimg=getIntent().getStringExtra("friendimg");
         initView();
     }
@@ -84,13 +97,16 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(conversation.getConversationTitle());
+
         voice= (ImageView) findViewById(R.id.chat_voice);
         voice.setOnClickListener(this);
         send= (ImageView) findViewById(R.id.chat_send);
+
         send.setOnClickListener(this);
         edit_message= (EditText) findViewById(R.id.chat_editmessage);
         listView= (ListView) findViewById(R.id.chat_listview);
         adapter=new ChatAdapter(this,conversation);
+        //会话查询全部的聊天信息
         conversation.queryMessages(null,20, new MessagesQueryListener() {
             @Override
             public void done(List<BmobIMMessage> list, BmobException e) {
@@ -99,12 +115,16 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         });
         listView.setAdapter(adapter);
         //L.i(adapter.getCount()+"");
+        //滚动到最后一条，但是为毛没用呢
         listView.smoothScrollToPosition(adapter.getCount());
     }
 
 
 
+    //消息监听事件
     public MessageSendListener listener = new MessageSendListener() {
+
+        //当消息发送成功后
         @Override
         public void done(BmobIMMessage bmobIMMessage, BmobException e) {
             if(e==null){
@@ -114,6 +134,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
             }
         }
 
+        //当消息开始发送
         @Override
         public void onStart(BmobIMMessage bmobIMMessage) {
             adapter.addMessage(bmobIMMessage);
@@ -122,6 +143,8 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         }
 
     };
+
+    //点击返回后finish本acvitity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -141,6 +164,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         }
     }
 
+    //绑定eventbus
     @Override
     protected void onStart() {
         super.onStart();
@@ -148,6 +172,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         BmobIM.getInstance().updateConversation(conversation);
     }
 
+    //解绑定eventbus
     @Override
     protected void onStop() {
         super.onStop();
@@ -155,6 +180,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         BmobIM.getInstance().updateConversation(c);
     }
 
+    //注册消息事件
     @Subscribe(sticky = true)
     public void reciveMessage(MessageEvent event){
         BmobIMConversation c = event.getConversation();
@@ -163,6 +189,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         listView.smoothScrollToPosition(adapter.getCount());
     }
 
+    //发送消息
     private void sendTextMessage() {
         BmobIMTextMessage message=new BmobIMTextMessage();
         String string = edit_message.getText().toString();

@@ -39,7 +39,7 @@ import cn.bmob.v3.listener.SaveListener;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/22 22:17
- * 用途：
+ * 用途：新好友adapter
  */
 
 public class NewFriendAdapter extends BaseAdapter implements View.OnClickListener {

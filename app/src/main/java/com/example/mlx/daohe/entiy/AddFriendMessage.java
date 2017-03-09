@@ -14,7 +14,7 @@ import cn.bmob.newim.bean.BmobIMMessage;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/21 20:42
- * 用途：
+ * 用途：添加好友邀请message
  */
 
 public class AddFriendMessage extends BmobIMExtraMessage {

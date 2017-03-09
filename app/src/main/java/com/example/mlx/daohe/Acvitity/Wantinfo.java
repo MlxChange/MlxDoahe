@@ -50,25 +50,29 @@ import cn.bmob.v3.listener.FindListener;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/25 20:03
- * 用途：
+ * 用途：邀请详情界面
  */
 
 public class Wantinfo extends BaseAcvitity implements View.OnClickListener {
 
-    private ImageView mywant_bg, mywant_circle;
-    private Toolbar mywant_toolbar;
+    private ImageView mywant_bg, mywant_circle;//界面背景和头像
+    private Toolbar mywant_toolbar;//toolbar
     private AppBarLayout near_bar;
-    private MaterialSpinner mywant_type;
-    private MaterialSpinner mywant_content;
-    private MaterialSpinner mywant_type2;
-    private LinearLayout setting_phone_layout;
+    //第三方spinnar
+    private MaterialSpinner mywant_type;//类型
+    private MaterialSpinner mywant_content;//邀请内容
+    private MaterialSpinner mywant_type2;//
+
+    //简介
     private EditText mywant_desc;
-    private LinearLayout setting_desc_layout;
+    //对方手机号和创建时间
     private TextView mywant_phone, mywant_time;
-    private LinearLayout mywant_phone_layout;
+
     String name;
+    //自定义dialog
     private CustomDialog cusdialog;
     private Want want;
+    //添加好友 查看资料，取消
     private Button dialog_addfriend;
     private Button dialog_seeinfo;
     private Button dialog_cancel;
@@ -86,6 +90,7 @@ public class Wantinfo extends BaseAcvitity implements View.OnClickListener {
     }
 
     private void getwantinfo(String wantid,long time2) {
+        //集合查询
         BmobQuery<Want> wantBmobQuery = new BmobQuery<>();
         wantBmobQuery.addWhereEqualTo("username", wantid);
         BmobQuery<Want> wantBmobQuery1 = new BmobQuery<>();
@@ -123,11 +128,11 @@ public class Wantinfo extends BaseAcvitity implements View.OnClickListener {
         mywant_type = (MaterialSpinner) findViewById(R.id.mywant_name);
         mywant_content = (MaterialSpinner) findViewById(R.id.mywant_content);
         mywant_type2 = (MaterialSpinner) findViewById(R.id.mywant_type2);
-        setting_phone_layout = (LinearLayout) findViewById(R.id.setting_phone_layout);
+
         mywant_desc = (EditText) findViewById(R.id.mywant_desc);
-        setting_desc_layout = (LinearLayout) findViewById(R.id.setting_desc_layout);
+
         mywant_phone = (TextView) findViewById(R.id.mywant_phone);
-        mywant_phone_layout = (LinearLayout) findViewById(R.id.mywant_phone_layout);
+
         mywant_circle = (ImageView) findViewById(R.id.mywant_circle);
         mywant_time = (TextView) findViewById(R.id.mywant_time);
         dialog=new ProgressDialog(this);

@@ -41,22 +41,26 @@ import cn.bmob.v3.listener.FindListener;
  * 包名：com.example.mlx.daohe.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/25 6:25
- * 用途：
+ * 用途：附近信息的fragment
  */
 
 public class fragment_near extends Fragment implements AMapLocationListener, SwipeRefreshLayout.OnRefreshListener {
 
+    //recycleview用来展示附近信息列表
     private RecyclerView near_recycleview;
+    //neardapter
     private NearAdapter adapter;
+    //邀请信息实体类
     private List<Want> mwantlist;
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
     private LocationManager manager;
+    //经度，维度
     private double jingdu, weidu;
     private Location location;
-
+    //下拉刷新控件
     private SwipeRefreshLayout swipe;
 
     @Nullable
@@ -69,9 +73,10 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
         return view;
     }
 
+    //调用定位方法取得经纬度
     private void test() {
-        jingdu=113.122927;
-        weidu=36.208622;
+//        jingdu=113.122927;
+//        weidu=36.208622;
         for (int i = 0; i < 2; i++) {
             getJingAndWei();
             //getdata1(i);
@@ -124,6 +129,7 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
 
     }
 
+    //从服务器获取数据
     private void getdata1(final int i) {
         if (weidu != 0 && jingdu != 0) {
             BmobGeoPoint point = new BmobGeoPoint(jingdu, weidu);
@@ -134,17 +140,17 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
                 @Override
                 public void done(List<Want> list, BmobException e) {
                     if (swipe != null && swipe.isRefreshing()) {
-                        swipe.setRefreshing(false);
+                        swipe.setRefreshing(false);//ding
                     }
                     if (e == null) {
                         mwantlist = list;
-                       // L.i(i+">得到的want数量是："+mwantlist.size());
-                        //L.i(i+">得到的数量是："+list.size());
-                        if(adapter==null){
-                            adapter=new NearAdapter(getActivity(),mwantlist);
+//                        L.i(i + ">得到的want数量是：" + mwantlist.size());
+//                        L.i(i + ">得到的数量是：" + list.size());
+                        if (adapter == null) {
+                            adapter = new NearAdapter(getActivity(), mwantlist);
                             near_recycleview.setAdapter(adapter);
                             //L.i(i+">adapter为null");
-                        }else{
+                        } else {
 //                            mwantlist.clear();
                             mwantlist.addAll(list);
                             adapter.notifyDataSetChanged();
@@ -171,18 +177,18 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
             @Override
             public void done(List<Want> list, BmobException e) {
                 if (e == null) {
-                    if(adapter==null){
+                    if (adapter == null) {
                         adapter = new NearAdapter(getContext(), mwantlist);
                         near_recycleview.setAdapter(adapter);
-                    }else{
+                    } else {
                         mwantlist.clear();
                         mwantlist.addAll(list);
                         adapter.notifyDataSetChanged();
                     }
-                    WantDao dao = NewFriendManager.getInstance(getContext()).getmDaoSession().getWantDao();
-                    for (int i = 0; i <list.size(); i++) {
-                        dao.insertOrReplace(list.get(i));
-                    }
+//                    WantDao dao = NewFriendManager.getInstance(getContext()).getmDaoSession().getWantDao();
+//                    for (int i = 0; i < list.size(); i++) {
+//                        dao.insertOrReplace(list.get(i));
+//                    }
                     if (swipe != null && swipe.isRefreshing()) {
                         swipe.setRefreshing(false);
                     }
@@ -195,6 +201,7 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
 
     }
 
+    //高德地图定位方法
     public void getJingAndWei() {
         mLocationClient = new AMapLocationClient(getContext());
         mLocationClient.setLocationListener(this);
@@ -213,33 +220,38 @@ public class fragment_near extends Fragment implements AMapLocationListener, Swi
         mLocationClient.startLocation();
     }
 
+    //当定位响应后
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (aMapLocation.getErrorCode() == 0) {
             weidu = aMapLocation.getLatitude();//获取纬度
             jingdu = aMapLocation.getLongitude();//获取经度
             //L.i("onLocationChanged");
+            //这里当定位成功后，调用方法，从服务器取得数据
             getdata1(0);
         } else {
-            L.i(aMapLocation.getErrorCode() + "," + aMapLocation.getErrorInfo());
+            //如果定位失败的话，就获取所有数据
+            //L.i(aMapLocation.getErrorCode() + "," + aMapLocation.getErrorInfo());
             Toast.makeText(getActivity(), "定位失败请重试", Toast.LENGTH_SHORT).show();
             getdata2();
         }
     }
 
+    //下拉后重新获取数据
     @Override
     public void onRefresh() {
         test();
     }
 
-    public void getORMdata() {
-        WantDao dao = NewFriendManager.getInstance(getContext()).getmDaoSession().getWantDao();
-        List<Want> wantList = dao.loadAll();
-        if(wantList!=null&&wantList.size()>0){
-            adapter=new NearAdapter(getContext(),wantList);
-            near_recycleview.setAdapter(adapter);
-        }else{
-            getJingAndWei();
-        }
-    }
+    //存储数据，目前已废弃
+//    public void getORMdata() {
+//        WantDao dao = NewFriendManager.getInstance(getContext()).getmDaoSession().getWantDao();
+//        List<Want> wantList = dao.loadAll();
+//        if (wantList != null && wantList.size() > 0) {
+//            adapter = new NearAdapter(getContext(), wantList);
+//            near_recycleview.setAdapter(adapter);
+//        } else {
+//            getJingAndWei();
+//        }
+//    }
 }

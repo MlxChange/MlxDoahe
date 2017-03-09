@@ -30,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/25 6:26
- * 用途：
+ * 用途：附近消息适配器
  */
 
 public class NearAdapter extends RecyclerView.Adapter<NearAdapter.MyViewholder> {

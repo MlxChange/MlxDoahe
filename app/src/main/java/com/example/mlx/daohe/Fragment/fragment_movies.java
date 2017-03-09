@@ -32,7 +32,7 @@ import java.util.List;
  * 包名：com.example.administrator.lxchange.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/11 19:06
- * 用途：
+ * 用途：电影的fragment
  */
 
 public class fragment_movies extends Fragment implements AdapterView.OnItemClickListener {
@@ -41,24 +41,28 @@ public class fragment_movies extends Fragment implements AdapterView.OnItemClick
 
 
 
-    private ListView listView;
-    private Hot_movies_Adapter adapter;
-    private Hot_Movies hot_movies;
+    private ListView listView;//lisvtiew用来展示电影列表
+    private Hot_movies_Adapter adapter;//电影列表适配器
+    private Hot_Movies hot_movies;//hot_movies热门电影实体类
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies,container,false);
         listView= (ListView) view.findViewById(R.id.hot_movies_listview);
         listView.setOnItemClickListener(this);
+        //从服务器查询信息
         requestFormAPI();
         return view;
     }
 
+    //从服务器查询信息
     private void requestFormAPI() {
         RxVolley.get(StaticClass.HOT_URL, new HttpCallback() {
             @Override
             public void onSuccess(String t) {
+                //shared存储加载好的json字符串，以供添加界面调用
                 SharedUtils.putString(getContext().getApplicationContext(),"movies",t);
+                //使用gson解析json字符串
                 hot_movies=new Gson().fromJson(t,Hot_Movies.class);
                 adapter=new Hot_movies_Adapter(getContext(),hot_movies);
                 listView.setAdapter(adapter);
@@ -75,6 +79,7 @@ public class fragment_movies extends Fragment implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //当点击每一项以后，设置id，并且加载到详情界面
         Intent intent=new Intent(getActivity(), Movies_desc.class);
         intent.putExtra("id",hot_movies.getData().getMovies().get(position).getId());
         startActivity(intent);

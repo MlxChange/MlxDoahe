@@ -135,12 +135,14 @@ public class SignUpActivity extends BaseAcvitity {
         finish();
     }
 
+    //验证手机验证码
     private void yanzhengPhone(final String number, final String username, final String password) {
         BmobSMS.requestSMSCode(number, "lxchange", new QueryListener<Integer>() {
             @Override
             public void done(Integer integer, BmobException e) {
                 if (e == null) {
                     prodialog.dismiss();
+                    //创建一个带输入框的对话框
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     final EditText editText = new EditText(SignUpActivity.this);
                     final AlertDialog alertDialog = builder.setTitle("验证短信").setView(editText).setCancelable(false).setPositiveButton("确定", null).setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -177,7 +179,7 @@ public class SignUpActivity extends BaseAcvitity {
                 } else {
                     prodialog.dismiss();
                     Toast.makeText(SignUpActivity.this, "短信验证码发送失败，请重试", Toast.LENGTH_SHORT).show();
-                    L.i("错误：" + e.toString());
+                    //L.i("错误：" + e.toString());
                 }
             }
         });

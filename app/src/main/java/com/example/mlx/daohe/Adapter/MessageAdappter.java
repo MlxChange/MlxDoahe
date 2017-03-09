@@ -37,15 +37,15 @@ import cn.bmob.newim.event.MessageEvent;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/19 17:43
- * 用途：
+ * 用途：消息适配器
  */
 
 public class MessageAdappter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    List<BmobIMConversation> mlist;
-    private MessageEvent event;
-    private int number;
+    List<BmobIMConversation> mlist;//会话列表
+    private MessageEvent event;//事件，用来接收最后一个消息
+    private int number;//未读数量
 
     private Context mcontext;
 
@@ -74,6 +74,7 @@ public class MessageAdappter extends BaseAdapter {
         return position;
     }
 
+    //添加最后一条消息到指定会话中，并且刷新adapter
     public void addLastMessage(MessageEvent event){
         this.event=event;
         SharedUtils.putString(mcontext,event.getConversation().getConversationId()+"time",UtilS.getLiketime(event.getMessage().getCreateTime()));

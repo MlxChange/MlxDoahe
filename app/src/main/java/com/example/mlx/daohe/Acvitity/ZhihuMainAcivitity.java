@@ -31,13 +31,16 @@ import java.util.List;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/28 2:20
- * 用途：
+ * 用途：知乎主页
  */
 
 public class ZhihuMainAcivitity extends BaseAcvitity implements OnBannerListener, ZhihuAdapter.onItemClickLinster {
 
+    //第三方轮播图控件
     private Banner zhihumain_banner;
+
     private RecyclerView zhihumain_recylview;
+
     private List<String> images,titles;
     private ZhihuAdapter adapter;
     ZhihuEntiy entiy;
@@ -72,6 +75,7 @@ public class ZhihuMainAcivitity extends BaseAcvitity implements OnBannerListener
             images.add(topStories.get(i).getImage());
             titles.add(topStories.get(i).getTitle());
         }
+        //轮播图的设置
         zhihumain_banner.setImages(images);
         zhihumain_banner.setBannerTitles(titles);
         zhihumain_banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
@@ -107,9 +111,11 @@ public class ZhihuMainAcivitity extends BaseAcvitity implements OnBannerListener
     @Override
     protected void onStop() {
         super.onStop();
+        //停止轮播图自动播放
         zhihumain_banner.stopAutoPlay();
     }
 
+    //轮播图点击事件
     @Override
     public void OnBannerClick(int position) {
         if(entiy!=null){

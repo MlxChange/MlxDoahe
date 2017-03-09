@@ -40,18 +40,24 @@ import cn.bmob.v3.listener.FindListener;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/20 20:08
- * 用途：
+ * 用途：查找好友界面
  */
 
 public class FindFriends extends AppCompatActivity{
 
 
+    //用于显示好友资料的linearlayout,当查找到好友时显示，平常为不显示
     private LinearLayout layout;
+    //姓名框
     private EditText edit_name;
+    //查找到的用户
     private MyUser myUser;
+    //好友资料头像
     private ImageView icon;
+    //好友姓名
     private TextView username;
-    private ListView mlistview;
+    private ListView mlistview;//用来显示所有的添加好友请求
+    //listviw
     private NewFriendAdapter adapter;
 
     @Override
@@ -84,6 +90,7 @@ public class FindFriends extends AppCompatActivity{
 
             }
 
+            //当清空输入框的时候，让下面资料隐藏
             @Override
             public void afterTextChanged(Editable s) {
                 if(s.length()==0){
@@ -94,6 +101,7 @@ public class FindFriends extends AppCompatActivity{
         icon = (ImageView) findViewById(R.id.findfriend_circle);
         username = (TextView) findViewById(R.id.findfriend_name);
         mlistview= (ListView) findViewById(R.id.newfriend_listview);
+
         List<NewFriend> newFriends = NewFriendManager.getInstance(this).getAllNewFriend();
         adapter=new NewFriendAdapter(this,newFriends);
         mlistview.setAdapter(adapter);
@@ -108,9 +116,11 @@ public class FindFriends extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    //
     public void addNewFriend(View v) {
         switch (v.getId()) {
             case R.id.findfriend_find: {
+                //每次查找都让资料隐藏，然后在gatuser中在显示
                 layout.setVisibility(View.GONE);
                 String name = edit_name.getText().toString().trim();
                 if (!TextUtils.isEmpty(name)) {
@@ -121,6 +131,7 @@ public class FindFriends extends AppCompatActivity{
                 break;
             }
             case R.id.findfriend_add: {
+                //跳转到添加好友界面
                 Intent intent = new Intent(FindFriends.this, RequestFriend.class);
                 intent.putExtra("id",myUser.getObjectId());
                 intent.putExtra("name",myUser.getUsername());
@@ -135,6 +146,7 @@ public class FindFriends extends AppCompatActivity{
         }
     }
 
+    //查询好友
     public void getUser(String name) {
         BmobQuery<MyUser> query = new BmobQuery<MyUser>();
         query.addWhereEqualTo("username", name);

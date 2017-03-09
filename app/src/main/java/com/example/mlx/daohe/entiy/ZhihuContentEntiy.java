@@ -9,7 +9,7 @@ import java.util.List;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/28 0:02
- * 用途：
+ * 用途：知乎详情实体类
  */
 
 public class ZhihuContentEntiy {

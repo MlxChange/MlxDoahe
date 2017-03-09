@@ -15,7 +15,7 @@ import cn.bmob.v3.BmobObject;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/21 20:39
- * 用途：
+ * 用途：好友邀请
  */
 @Entity
 public class NewFriend extends BmobObject implements Serializable {

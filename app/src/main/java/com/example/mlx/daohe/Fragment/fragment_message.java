@@ -50,16 +50,16 @@ import cn.bmob.v3.listener.FindListener;
  * 包名：com.example.mlx.daohe.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/17 23:52
- * 用途：
+ * 用途：消息fragment
  */
 
 public class fragment_message extends Fragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
-    private ListView mlistview;
-    private MessageAdappter adapter;
-    private Map<String,String> lastMessages;
-    private List<BmobIMConversation> allConversation;
-    private BadgeView badgeView;
+    private ListView mlistview;//listview 用于展示消息列表
+    private MessageAdappter adapter;//messageadpater
+    private Map<String,String> lastMessages;//最后一条消息map
+    private List<BmobIMConversation> allConversation;//本地会话列表
+    private BadgeView badgeView;//小红点
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,10 +67,13 @@ public class fragment_message extends Fragment implements AdapterView.OnItemClic
         mlistview= (ListView) view.findViewById(R.id.message_listview);
         //lastMessages=new HashMap<>();
         getMessageEntiy();
+
         adapter=new MessageAdappter(getContext(),allConversation);
+
         mlistview.setAdapter(adapter);
         mlistview.setOnItemClickListener(this);
         mlistview.setOnItemLongClickListener(this);
+        //注册EventBus
         EventBus.getDefault().register(this);
         return view;
     }
@@ -79,17 +82,19 @@ public class fragment_message extends Fragment implements AdapterView.OnItemClic
         allConversation = BmobIM.getInstance().loadAllConversation();
     }
 
+    //设置为异步，即后注册也能接受到事件发送
     @Subscribe(sticky = true)
     public void getMessage(MessageEvent event){
-        long unReadCount = BmobIM.getInstance().getUnReadCount(event.getConversation().getConversationId());
-        long count = BmobIM.getInstance().getUnReadCount(allConversation.get(0).getConversationId());
+
         BmobIMConversation imConversation = event.getConversation();
+        //如果发送方Id不是本地用户的话就添加进去
         if(!event.getFromUserInfo().getUserId().equals(BmobUser.getCurrentUser().getObjectId())){
             adapter.addLastMessage(event);
         }
     }
 
 
+    //点击后跳转到聊天界面
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent=new Intent(getActivity(), ChatAcvitity.class);

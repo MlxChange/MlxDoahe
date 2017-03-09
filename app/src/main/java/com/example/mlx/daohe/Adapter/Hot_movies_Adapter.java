@@ -19,11 +19,12 @@ import java.util.List;
  * 包名：com.example.administrator.lxchange.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/11 18:05
- * 用途：
+ * 用途：热门电影适配器
  */
 
 public class Hot_movies_Adapter  extends BaseAdapter{
 
+    //热门电影实体类集合
     private List<Hot_Movies.DataBean.MoviesBean> mlist;
     private LayoutInflater inflater;
     private Context mcontext;

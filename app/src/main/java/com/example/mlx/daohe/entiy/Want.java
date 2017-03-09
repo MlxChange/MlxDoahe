@@ -13,7 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * 包名：com.example.mlx.daohe.entiy
  * 创建者：MLX
  * 创建时间：2017/2/25 2:29
- * 用途：
+ * 用途：邀请信息实体类
  */
 @Entity
 public class Want extends BmobObject {

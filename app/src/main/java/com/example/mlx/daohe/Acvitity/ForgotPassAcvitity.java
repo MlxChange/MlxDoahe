@@ -43,10 +43,13 @@ import cn.bmob.v3.listener.UpdateListener;
 public class ForgotPassAcvitity extends BaseAcvitity {
 
 
-    private TextView title;//
+    private TextView title;//title
     private Button send, forgot_ok;
+    //手机号，验证码，密码编辑框
     private EditText edit_phone, edit_code, edit_pass;
+    //新密码编辑框
     private TextInputLayout edit_pass_layout;
+
     private MyUser user;
     private ProgressDialog prodialog;
 
@@ -54,6 +57,7 @@ public class ForgotPassAcvitity extends BaseAcvitity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgotpass);
+        //加载背景图片
         Glide.with(this).load(R.drawable.login_bg).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -69,6 +73,7 @@ public class ForgotPassAcvitity extends BaseAcvitity {
         finish();
     }
 
+    //初始化所有的View
     private void initView() {
         title = (TextView) findViewById(R.id.forgot_title);
         UtilS.setFont(this, title);
@@ -87,12 +92,14 @@ public class ForgotPassAcvitity extends BaseAcvitity {
 
     public void forgot(View v) {
         switch (v.getId()) {
+            //确定按钮
             case R.id.forgot_ok: {
                 String code = edit_code.getText().toString().trim();
                 final String pass = edit_pass.getText().toString().trim();
                 if (!TextUtils.isEmpty(code) & !TextUtils.isEmpty(pass)) {
                     if (UtilS.isPass(pass)) {
                         prodialog.show();
+                        //重置密码
                         BmobUser.resetPasswordBySMSCode(code, pass, new UpdateListener() {
                             @Override
                             public void done(BmobException e) {
@@ -116,12 +123,14 @@ public class ForgotPassAcvitity extends BaseAcvitity {
                 break;
             }
             case R.id.forgot_send: {
+                //发送验证码按钮
                 final String phoneNumber = edit_phone.getText().toString().trim();
                 if (!TextUtils.isEmpty(phoneNumber)) {
                     if (UtilS.isPhone(phoneNumber)) {
                         BmobQuery<MyUser> query = new BmobQuery<MyUser>();
                         query.addWhereEqualTo("mobilePhoneNumber", phoneNumber);
                         prodialog.show();
+                        //发送验证码
                         query.findObjects(new FindListener<MyUser>() {
                             @Override
                             public void done(final List<MyUser> object, BmobException e) {

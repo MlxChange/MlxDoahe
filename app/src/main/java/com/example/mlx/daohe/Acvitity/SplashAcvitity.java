@@ -28,6 +28,7 @@ import com.example.mlx.daohe.Utils.UtilS;
 public class SplashAcvitity extends BaseAcvitity {
 
 
+    //2s后消失
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {

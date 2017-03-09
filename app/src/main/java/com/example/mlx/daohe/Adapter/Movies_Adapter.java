@@ -22,7 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/27 17:40
- * 用途：
+ * 用途：电影详情适配器
  */
 
 public class Movies_Adapter extends RecyclerView.Adapter<Movies_Adapter.MyViewHolder> {

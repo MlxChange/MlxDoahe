@@ -20,7 +20,7 @@ import java.util.List;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/28 2:28
- * 用途：
+ * 用途：知乎adapter
  */
 
 public class ZhihuAdapter extends RecyclerView.Adapter<ZhihuAdapter.ViewHolder> {

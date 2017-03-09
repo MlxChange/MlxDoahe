@@ -46,11 +46,13 @@ public class LoginAcvitity extends BaseAcvitity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //如果当前有登录用户，那么直接进入mainacvitity
         if(BmobUser.getCurrentUser()!=null){
             startActivity(new Intent(this,MainActivity.class));
             finish();
         }
         setContentView(R.layout.login);
+        //设置背景
         Glide.with(this).load(R.drawable.login_bg).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -78,6 +80,7 @@ public class LoginAcvitity extends BaseAcvitity {
             user.setUsername(name);
             user.setPassword(pass);
             dialog.show();
+            //验证是否登陆成功
             user.login(new SaveListener<MyUser>() {
                 @Override
                 public void done(MyUser myUser, BmobException e) {
@@ -101,11 +104,13 @@ public class LoginAcvitity extends BaseAcvitity {
 
     public void login_loginAndsign(View v){
         switch (v.getId()){
+            //跳转进入忘记密码界面
             case R.id.login_forgot:{
                 startActivity(new Intent(this,ForgotPassAcvitity.class));
                 break;
             }
             case R.id.login_signup:{
+                //跳转到注册界面
                 startActivity(new Intent(this,SignUpActivity.class));
                 break;
             }

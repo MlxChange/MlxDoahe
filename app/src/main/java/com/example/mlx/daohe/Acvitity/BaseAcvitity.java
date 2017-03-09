@@ -43,6 +43,7 @@ public class BaseAcvitity extends AppCompatActivity {
         }
     }
 
+    //返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -52,6 +53,7 @@ public class BaseAcvitity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //返回按钮
     public void back(View v) {
         finish();
     }

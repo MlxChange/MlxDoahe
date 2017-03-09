@@ -19,7 +19,7 @@ import java.util.List;
  * 包名：com.example.mlx.daohe.Adapter
  * 创建者：MLX
  * 创建时间：2017/2/19 17:43
- * 用途：
+ * 用途：好友adapter
  */
 
 public class FriendAdappter extends BaseAdapter {

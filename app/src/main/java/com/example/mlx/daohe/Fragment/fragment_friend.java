@@ -45,16 +45,16 @@ import cn.bmob.v3.listener.FindListener;
  * 包名：com.example.mlx.daohe.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/17 23:52
- * 用途：
+ * 用途：好友fragment
  */
 
 public class fragment_friend extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ListView listView;
-    private List<Friend> mFriend;
+    private List<Friend> mFriend;//好友集合
     private FriendAdappter adapter;
-    private TextView newFriend, friends;
-    private TextView button1, button2;
+
+    private TextView button1;
     private ImageView img;
     private BadgeView badeview;
 
@@ -67,6 +67,7 @@ public class fragment_friend extends Fragment implements View.OnClickListener, A
         img= (ImageView) view.findViewById(R.id.newfriend_contact);
         button1.setOnClickListener(this);
         getFriends();
+
         if(mFriend!=null&&mFriend.size()>0){
             adapter = new FriendAdappter(getContext(), mFriend);
             listView.setAdapter(adapter);
@@ -76,18 +77,21 @@ public class fragment_friend extends Fragment implements View.OnClickListener, A
     }
 
 
+    //注册EventBus
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
     }
 
+    //解绑EventBus
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
 
+    //从服务器获取好友列表
     public void getFriends() {
         BmobQuery<Friend> query = new BmobQuery<>();
         MyUser user = BmobUser.getCurrentUser(MyUser.class);
@@ -108,8 +112,10 @@ public class fragment_friend extends Fragment implements View.OnClickListener, A
         });
     }
 
+    //接收EventBus方法，运行在主线程且为异步方法
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void showRedPoint(MyEvent event){
+        //收到消息后显示小红点
         badeview = BadgeFactory.create(getContext()).
                 setWidthAndHeight(6, 6).setBadgeBackground(Color.RED).
                 setBadgeGravity(Gravity.END | Gravity.TOP).setShape(BadgeView.SHAPE_CIRCLE).bind(img);
@@ -122,6 +128,7 @@ public class fragment_friend extends Fragment implements View.OnClickListener, A
                 if(badeview!=null){
                     badeview.unbind();
                 }
+                //跳转到查询好友acvitity
                 Intent intent=new Intent(getActivity(), FindFriends.class);
                 startActivity(intent);
                 break;
@@ -130,6 +137,8 @@ public class fragment_friend extends Fragment implements View.OnClickListener, A
     }
 
 
+    //查询好友信息，并且添加BmobIMUserInfo，然后开启一个会话，并将会话存储到
+    //bundle中，开启聊天界面
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final MyUser friend1 = mFriend.get(position).getFriend();

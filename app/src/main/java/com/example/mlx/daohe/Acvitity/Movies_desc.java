@@ -42,25 +42,20 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * 包名：com.example.mlx.daohe.Acvitity
  * 创建者：MLX
  * 创建时间：2017/2/27 17:21
- * 用途：
+ * 用途：电影详情的acvitity
  */
 
 public class Movies_desc extends BaseAcvitity {
 
+    //第三放播放器控件
     private JCVideoPlayerStandard item_movies_player;
-    //    private TextView item_movies_MoviesName;
-//    private TextView item_movies_star;
-//    private TextView item_movies_wish;
-//    private TextView item_movies_type;
-//    private TextView item_movies_area;
-//    private TextView item_movies_time;
-//    private LinearLayout _item_movies_head_bg;
+   //电影详情
     private TextView item_desc;
+    //展示评论的recycleview
     private RecyclerView item_movies_recycleView;
     private int moviesId;
     private String json;
     Movies_Adapter adapter;
-    private ImageView img;
 
 
     @Override
@@ -68,6 +63,7 @@ public class Movies_desc extends BaseAcvitity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_movies);
         initView();
+        //获得电影的id
         moviesId = getIntent().getIntExtra("id", -1);
         if (moviesId != -1) {
             getdata();
@@ -76,19 +72,13 @@ public class Movies_desc extends BaseAcvitity {
 
     private void initView() {
         item_movies_player = (JCVideoPlayerStandard) findViewById(R.id.item_movies_player);
-//        item_movies_MoviesName = (TextView) findViewById(R.id.item_movies_MoviesName);
-//        item_movies_star = (TextView) findViewById(R.id.item_movies_star);
-//        item_movies_wish = (TextView) findViewById(R.id.item_movies_wish);
-//        item_movies_type = (TextView) findViewById(R.id.item_movies_type);
-//        item_movies_area = (TextView) findViewById(R.id.item_movies_area);
-//        item_movies_time = (TextView) findViewById(R.id.item_movies_time);
-//        _item_movies_head_bg = (LinearLayout) findViewById(R.id._item_movies_head_bg);
         item_desc = (TextView) findViewById(R.id.item_desc);
         item_movies_recycleView = (RecyclerView) findViewById(R.id.item_movies_recycleView);
 
     }
 
     public Object getdata() {
+        //获得电影详情
         RxVolley.get(UtilS.getMoviesURL(moviesId + ""), new HttpCallback() {
             @Override
             public void onSuccess(String t) {
@@ -106,17 +96,16 @@ public class Movies_desc extends BaseAcvitity {
         return null;
     }
 
+    //解析获得到的json字符串
     private void preseJson() {
+        //解析为movies实体类
         Movies movies = new Gson().fromJson(json, Movies.class);
+
         Movies.DataBean.MovieDetailModelBean model = movies.getData().getMovieDetailModel();
         item_movies_player.setUp(model.getVd(), JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL);
-//        item_movies_MoviesName.setText(model.getNm());
-//        item_movies_star.setText(model.getSc()+"");
-//        item_movies_wish.setText(model.getWish()+"人");
-//        item_movies_type.setText(model.getCat());
-//        item_movies_area.setText(model.getSrc()+"/"+model.getDur()+"分钟");
-//        item_movies_time.setText(model.getRt());
+
         String dra = model.getDra();
+        //获得电影详细介绍，并且去掉<p>标签
         String valueOf = String.copyValueOf(dra.toCharArray(), 3, dra.length() - 7);
         item_desc.setText(valueOf);
 
@@ -138,16 +127,10 @@ public class Movies_desc extends BaseAcvitity {
     }
 
 
-
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-    }
-
+    //获得评论详情
     public Object getThink() {
         String thinkURl = UtilS.getThinkURl(moviesId + "");
+        //获得评论json字符串
         RxVolley.get(thinkURl, new HttpCallback() {
             @Override
             public void onFailure(VolleyError error) {
@@ -156,7 +139,9 @@ public class Movies_desc extends BaseAcvitity {
 
             @Override
             public void onSuccess(String t) {
+                //解析为评论实体类
                 MoviesThink think = new Gson().fromJson(t, MoviesThink.class);
+                //设置评论
                 preseThinkJson(think);
             }
 
@@ -165,6 +150,7 @@ public class Movies_desc extends BaseAcvitity {
         return null;
     }
 
+    //设置评论recycleview
     private void preseThinkJson(MoviesThink think) {
         adapter=new Movies_Adapter(this,think.getHcmts());
         item_movies_recycleView.setAdapter(adapter);

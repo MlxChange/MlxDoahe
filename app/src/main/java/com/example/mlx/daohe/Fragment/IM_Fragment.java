@@ -20,17 +20,17 @@ import java.util.List;
  * 包名：com.example.administrator.lxchange.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/11 17:01
- * 用途：
+ * 用途：聊天fragment
  */
 
 public class IM_Fragment extends Fragment {
 
 
-    private TabLayout tabLayout;
+    private TabLayout tabLayout;//tablayout,用于和viewpager配合加载fragment
     private ViewPager pager;
-    private List<Fragment> mfragment;
-    private List<String> title;
-    private Fragment fragment_message,fragment_friend;
+    private List<Fragment> mfragment;//fragment容器，装载消息和好友两个fragment
+    private List<String> title;//标题list，为消息和好友
+    private Fragment fragment_message,fragment_friend;//fragment消息和好友
 
     @Nullable
     @Override

@@ -5,7 +5,7 @@ package com.example.mlx.daohe.MessageEvent;
  * 包名：com.example.mlx.daohe.MyEvent
  * 创建者：MLX
  * 创建时间：2017/2/23 1:48
- * 用途：
+ * 用途：已废弃
  */
 
 public class MyEvent {

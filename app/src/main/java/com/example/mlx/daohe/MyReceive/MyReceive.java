@@ -47,7 +47,7 @@ import cn.bmob.v3.listener.SaveListener;
  * 包名：com.example.mlx.daohe.MyReceive
  * 创建者：MLX
  * 创建时间：2017/2/21 19:38
- * 用途：
+ * 用途：用于接收服务器接受的消息
  */
 
 public class MyReceive extends BmobIMMessageHandler {

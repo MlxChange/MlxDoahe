@@ -6,6 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * 项目名：Daohe2
+ * 包名：com.example.mlx.daohe.entiy
+ * 创建者：MLX
+ * 创建时间：2017/2/21 20:20
+ * 用途：自定义layoutmanager，用于recycleview和scrollview嵌套时使用
+ */
+
 public class FullyLinearLayoutManager extends LinearLayoutManager {
       
         private static final String TAG = FullyLinearLayoutManager.class.getSimpleName();  

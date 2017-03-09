@@ -65,19 +65,17 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
     private ProgressDialog dialog;
     private String email1 = "";
     private String name1;
+    //对话框中的相机，图库，取消
     Button camera, pictrue, cancle;
     private Uri uri;
+    //自定义对话框
     private CustomDialog cusdialog;
     private File file;
 
+    //相机申请码
     private static final int cameraRequestCode = 1;
+    //图库申请码
     private static final int imageRequestCode = 2;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +86,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
         initView();
     }
 
+    //初始化View
     private void initView() {
         edit_name = (EditText) findViewById(R.id.setting_name);
         edit_age = (EditText) findViewById(R.id.setting_age);
@@ -100,6 +99,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
 
 
         isEnable(false);
+        //获得本地用户并且设置资料
         MyUser user = MyUser.getCurrentUser(MyUser.class);
         int age = user.getAge();
         if(!TextUtils.isEmpty(user.getEmail())){
@@ -131,6 +131,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
         dialog.setMessage("努力加载中");
     }
 
+    //设置资料是否可以点击
     public void isEnable(boolean is) {
         edit_name.setEnabled(is);
         edit_age.setEnabled(is);
@@ -139,10 +140,12 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
     }
 
     public void setting_ok(View v) {
+        //获得资料的内容
         final String name = edit_name.getText().toString().trim();
         String age = edit_age.getText().toString().trim();
         String desc = edit_desc.getText().toString().trim();
         final String email = edit_email.getText().toString().trim();
+
         if (!TextUtils.isEmpty(name) & !TextUtils.isEmpty(age) & !TextUtils.isEmpty(email)) {
             if (UtilS.isUsername(name)) {
                 if (UtilS.isEmail(email)) {
@@ -158,6 +161,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
                     user.setDesc(desc);
                     dialog.show();
                     BmobUser bmobUser = MyUser.getCurrentUser();
+                    //更新用户资料
                     user.update(bmobUser.getObjectId(), new UpdateListener() {
                         @Override
                         public void done(BmobException e) {
@@ -206,6 +210,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        //修改开关状态
         if (isChecked) {
             isEnable(true);
             setting_ok.setVisibility(View.VISIBLE);
@@ -262,6 +267,7 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dialog_camera: {
+                //查看是否获得相机权限
                 getpression();
                 break;
             }
@@ -284,13 +290,16 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        L.i("requestcode:" + requestCode + ",resultcode:" + resultCode + ",data:" + data);
+        //L.i("requestcode:" + requestCode + ",resultcode:" + resultCode + ",data:" + data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
+
                 case cameraRequestCode: {
                     try {
+                        //通过uri获得文件对象
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
                         circleImageView.setImageBitmap(bitmap);
+                        //存储到本地
                         SharedUtils.putString(this, "img", file.getAbsolutePath());
                         uploadimg(file.getAbsolutePath());
                     } catch (FileNotFoundException e) {
@@ -298,11 +307,15 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
                     }
                     break;
                 }
+
                 case imageRequestCode: {
                     uri = data.getData();
+                    //固定的字符串
                     String filepathColun[] = {MediaStore.Images.Media.DATA};
+                    //查询表名
                     Cursor cursor = getContentResolver().query(uri, filepathColun, null, null, null);
                     cursor.moveToFirst();
+                    //获得第一个文件的地址
                     int coumindex = cursor.getColumnIndex(filepathColun[0]);
                     String imagePhth = cursor.getString(coumindex);
                     circleImageView.setImageBitmap(BitmapFactory.decodeFile(imagePhth));
@@ -318,13 +331,14 @@ public class SettingActivity extends BaseAcvitity implements CompoundButton.OnCh
         if(!TextUtils.isEmpty(filepath)) {
             final BmobFile bfile = new BmobFile(new File(filepath));
             dialog.show();
+            //上传文件
             bfile.uploadblock(new UploadFileListener() {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
                         MyUser currentUser = BmobUser.getCurrentUser(MyUser.class);
                         currentUser.setImgFileUrl(bfile.getFileUrl());
-                        L.i("文件地址："+bfile.getFileUrl());
+                        //L.i("文件地址："+bfile.getFileUrl());
                         currentUser.update(currentUser.getObjectId(),new UpdateListener() {
                             @Override
                             public void done(BmobException e) {

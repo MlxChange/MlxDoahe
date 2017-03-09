@@ -9,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 包名：com.example.administrator.lxchange.entiy
  * 创建者：MLX
  * 创建时间：2017/2/11 0:50
- * 用途：
+ * 用途：电影评论
  */
 
 public class Think extends BmobObject{

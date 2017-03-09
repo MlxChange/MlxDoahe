@@ -43,7 +43,7 @@ import java.util.List;
  * 包名：com.example.administrator.lxchange.Fragment
  * 创建者：MLX
  * 创建时间：2017/2/11 19:06
- * 用途：
+ * 用途：美食Fragment
  */
 
 public class fragment_meishi extends Fragment implements AMapLocationListener {
@@ -54,13 +54,19 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
     public AMapLocationClient mLocationClient = null;
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
+    //listview，用来展示美食列表
     private ListView listView;
+    //美食adapter
     private Hot_meishi_Adapter adapter;
+    //美食实体类
     private Hot_Meishi hot_meishi;
     LocationManager manager;
+    //经度和纬度
     private double lng, lat;
+    //地理位置提供者字符串
     private String locationProvider;
     private Location location;
+    //进度条对话框
     private ProgressDialog dialog;
 
     @Nullable
@@ -73,18 +79,19 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
         dialog=new ProgressDialog(mcontext);
         dialog.setTitle("请稍等哒");
         dialog.setMessage("努力加载中");
-        getPression();
+        //getPression();
         //requestFormAPI();
 
         return view;
     }
 
 
-
+    //从接口获取数据
     private void requestFormAPI() {
         RxVolley.get(UtilS.getMeishiURL(lng, lat), new HttpCallback() {
             @Override
             public void onSuccess(String t) {
+                //将得到的json字符串通过shared保存起来，供添加邀请信息界面调用
                 hot_meishi = new Gson().fromJson(t, Hot_Meishi.class);
                 SharedUtils.putString(getActivity().getApplicationContext(),"meishi",t);
                 adapter = new Hot_meishi_Adapter(getContext(), hot_meishi);
@@ -109,6 +116,7 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
         }
     }
 
+    //申请6.0动态权限:
     public void getPression() {
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             //dialog.show();
@@ -118,6 +126,7 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
         }
     }
 
+    //当获取到位置后，调用requestFormAPI方法，查询数据
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         dialog.dismiss();
@@ -126,7 +135,7 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
             lng = aMapLocation.getLongitude();//获取经度
             requestFormAPI();
         } else {
-            L.i(aMapLocation.getErrorCode() + "," + aMapLocation.getErrorInfo());
+            //L.i(aMapLocation.getErrorCode() + "," + aMapLocation.getErrorInfo());
             Toast.makeText(mcontext, "定位失败请重试", Toast.LENGTH_SHORT).show();
         }
     }

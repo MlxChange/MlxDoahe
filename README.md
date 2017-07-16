@@ -24,6 +24,6 @@
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/4%20(11).png)<br>
 聊天详情界面<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/4.png)<br>
-退出界面<br>
+参加邀请界面<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/exit.png)<br>
 

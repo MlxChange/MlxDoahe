@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<com.tencent.smtt.sdk.WebView
-		android:padding="5dp"
-		android:id="@+id/webview"
+	<android.support.v7.widget.Toolbar
+		app:title="sss"
+		android:background="@color/colorPrimary"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="?android:attr/actionBarSize">
 
-	</com.tencent.smtt.sdk.WebView>
+	</android.support.v7.widget.Toolbar>
 
+	<TextView
+
+		android:text="sssssss"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
 
 
 </LinearLayout>

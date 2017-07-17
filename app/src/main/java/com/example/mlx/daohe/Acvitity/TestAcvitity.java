@@ -1,5 +1,6 @@
 package com.example.mlx.daohe.Acvitity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ import java.util.List;
  * 用途：
  */
 
-public class TestAcvitity extends AppCompatActivity {
+public class TestAcvitity extends BaseAcvitity {
 
     private double jingdu, weidu;
     private WebView mwebview;
@@ -33,9 +34,10 @@ public class TestAcvitity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.test);
-        initView();
-        test();
+        //initView();
+        //test();
     }
 
     private void test() {
@@ -93,7 +95,7 @@ public class TestAcvitity extends AppCompatActivity {
 
     private void initView() {
         //test_webview = (WebView) findViewById(R.id.test_webview);
-        mwebview = (WebView) findViewById(R.id.webview);
+        //mwebview = (WebView) findViewById(R.id.webview);
         WebSettings settings = mwebview.getSettings();
         settings.setJavaScriptEnabled(true);
        //settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);

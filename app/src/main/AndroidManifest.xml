@@ -65,7 +65,7 @@
 		<meta-data
 			android:name="Bmob_APP_KEY"
 			android:value="dac2faee7190d653e2f3a7da2521fa61" />
-		<activity android:name=".Acvitity.SplashAcvitity" android:theme="@style/AppTheme">
+		<activity android:name=".Acvitity.SplashAcvitity" android:theme="@style/MlxNoactionBar">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 

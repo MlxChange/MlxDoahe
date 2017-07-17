@@ -79,7 +79,7 @@ public class fragment_meishi extends Fragment implements AMapLocationListener {
         dialog=new ProgressDialog(mcontext);
         dialog.setTitle("请稍等哒");
         dialog.setMessage("努力加载中");
-        //getPression();
+        getPression();
         //requestFormAPI();
 
         return view;

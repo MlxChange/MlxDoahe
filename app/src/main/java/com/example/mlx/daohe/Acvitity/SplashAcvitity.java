@@ -34,10 +34,13 @@ public class SplashAcvitity extends BaseAcvitity {
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case StaticClass.HAND_SPLASH:{
+                    //如果是第一次 那么就打开引导页
                     if (isFirst()){
                         startActivity(new Intent(SplashAcvitity.this,GuideActivity.class));
                         finish();
-                    }else{
+                    }
+                    //不是第一次，打开登陆页面
+                    else{
                         startActivity(new Intent(SplashAcvitity.this,LoginAcvitity.class));
                         finish();
                     }
@@ -57,18 +60,22 @@ public class SplashAcvitity extends BaseAcvitity {
         initView();
     }
 
+    //初始化View
     private void initView() {
         //延时2s后判断是否第一次打开应用然后根据结果进入引导页或主页
         layout= (RelativeLayout) findViewById(R.id.splash);
+        //加载图片
         Glide.with(this).load(R.drawable.bg).fitCenter().into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                 layout.setBackground(resource);
             }
         });
+        //发送一个事件，让2s后本activity消失
         handler.sendEmptyMessageDelayed(StaticClass.HAND_SPLASH,2000);
         textview= (TextView) findViewById(R.id.splash_tv);
         xtv= (TextView) findViewById(R.id.splash_txt);
+        //设置字体
         UtilS.setFont(this,textview);
         UtilS.setFont(this,xtv);
 

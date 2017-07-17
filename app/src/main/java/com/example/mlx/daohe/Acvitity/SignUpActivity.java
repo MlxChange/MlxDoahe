@@ -43,6 +43,7 @@ public class SignUpActivity extends BaseAcvitity {
     private EditText name, pass, pass2, phone;
     private int success = 0;
     private String code = "";
+    //弹出对话框
     private ProgressDialog prodialog;
     private TextView title;
 
@@ -50,6 +51,7 @@ public class SignUpActivity extends BaseAcvitity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
+        //加载背景图片
         Glide.with(this).load(R.drawable.login_bg).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -62,12 +64,14 @@ public class SignUpActivity extends BaseAcvitity {
 
     private void initview() {
         title = (TextView) findViewById(R.id.sign_title);
+        //设置字体
         UtilS.setFont(this, title);
         name = (EditText) findViewById(R.id.sign_name);
         pass = (EditText) findViewById(R.id.sign_pass1);
         pass2 = (EditText) findViewById(R.id.sign_pass2);
         phone = (EditText) findViewById(R.id.sign_phone);
         prodialog = new ProgressDialog(this);
+        //设置对话框
         prodialog.setTitle("请稍等哒");
         prodialog.setMessage("努力加载中(ง •̀_•́)ง");
     }
@@ -92,6 +96,7 @@ public class SignUpActivity extends BaseAcvitity {
                                 user.setMobilePhoneNumber(phonenumber);
                                 user.signUp(new SaveListener<MyUser>() {
                                     @Override
+                                    //服务器回调方法，注册完成以后响应事件
                                     public void done(MyUser myUser, BmobException e) {
                                         if (e == null) {
                                             BmobIMUserInfo userInfo = new BmobIMUserInfo();

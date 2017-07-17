@@ -41,6 +41,7 @@ public class LoginAcvitity extends BaseAcvitity {
 
     private TextView title;
     private EditText edit_name,edit_pass;
+    //弹出对话框
     private ProgressDialog dialog;
 
     @Override
@@ -64,14 +65,17 @@ public class LoginAcvitity extends BaseAcvitity {
 
     private void initView() {
         title= (TextView) findViewById(R.id.login_title);
+        //设置字体
         UtilS.setFont(this,title);
         edit_name= (EditText) findViewById(R.id.login_name);
         edit_pass= (EditText) findViewById(R.id.login_pass);
         dialog=new ProgressDialog(this);
+        //初始化dialog
         dialog.setTitle("请稍等哒");
         dialog.setMessage("努力加载中");
     }
 
+    //登录按钮响应时间
     public void login(View v){
         final String name = edit_name.getText().toString().trim();
         final String pass = edit_pass.getText().toString().trim();

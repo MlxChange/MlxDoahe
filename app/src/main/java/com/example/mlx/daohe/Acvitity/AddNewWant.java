@@ -93,9 +93,12 @@ public class AddNewWant extends BaseAcvitity implements MaterialSpinner.OnItemSe
         if(!TextUtils.isEmpty(json)){
             hot_meishi = new Gson().fromJson(json2, Hot_Meishi.class);
             List<Hot_Meishi.ResultBean> meishi = hot_meishi.getResult();
-            for (int i = 0; i < meishi.size(); i++) {
-                moviesName.add(meishi.get(i).getName());
+            if(meishi!=null){
+                for (int i = 0; i < meishi.size(); i++) {
+                    moviesName.add(meishi.get(i).getName());
+                }
             }
+
         }
     }
 

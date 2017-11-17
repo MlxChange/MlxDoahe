@@ -7,7 +7,7 @@
 邀请信息界面：<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/4%20(1).png)<br>
 首页界面：<br>
-![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/daohe.png)<br><br>
+![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/daohe.png)<br>
 引导页界面：<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/4%20(4).png)<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/4%20(5).png)<br>

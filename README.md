@@ -1,6 +1,6 @@
 # MlxDoahe
 道和，一款移动社交app，使用了Glide，EventBus， Bmob后端云，Bmob即时通讯，Okhttp，RxVolley，metraial desgin，greenDao等框架或者库。<br>
-使用了聚合的数据，猫眼电影的api，知乎日报的api，仅供学习使用。
+使用了聚合的数据，猫眼电影的api，知乎日报的api，仅供学习
 运行截图：<br>
 主界面：<br>
 ![image](https://github.com/MlxChange/MlxDoahe/blob/master/img/main.png)<br>

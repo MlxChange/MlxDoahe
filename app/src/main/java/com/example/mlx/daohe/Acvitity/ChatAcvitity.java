@@ -62,7 +62,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
 
     private String friendimg;
 
-    //传过来的会
+    //传过来的会话
     BmobIMConversation c;
 
     private ChatAdapter adapter;

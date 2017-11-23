@@ -172,7 +172,7 @@ public class ChatAcvitity extends BaseAcvitity implements View.OnClickListener {
         BmobIM.getInstance().updateConversation(conversation);
     }
 
-    //解绑定eventbus
+    //解绑定 eventbus
     @Override
     protected void onStop() {
         super.onStop();
